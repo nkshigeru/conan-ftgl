@@ -1,0 +1,14 @@
+jobs:
+- job: 'Win'
+  pool: 
+    vmImage: 'vs2017-win2016'
+  variables:
+    CONAN_VISUAL_VERSIONS: 15
+  strategy:
+    matrix:
+      x86:
+        CONAN_ARCHS: x86
+      x64:
+        CONAN_ARCHS: x86_64
+  steps:
+  - template: .ci/azure-pipelines/build.yml
